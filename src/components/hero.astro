@@ -1,0 +1,119 @@
+---
+import { Picture } from "astro:assets";
+import heroImage from "@/assets/hero.png";
+import Link from "@/components/ui/link.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<main class="relative overflow-hidden">
+  <!-- Background gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-silver-100"></div>
+  
+  <div class="relative grid lg:grid-cols-2 gap-12 place-items-center pt-16 pb-8 md:pt-20 md:pb-24 px-4">
+    <!-- Hero Video -->
+    <div class="py-6 md:order-2">
+      <div class="relative">
+        <!-- Video Player -->
+        <div class="w-full h-96 md:h-[500px] bg-black rounded-2xl shadow-2xl overflow-hidden">
+          <video 
+            class="w-full h-full object-cover rounded-2xl"
+            autoplay 
+            muted 
+            loop 
+            playsinline
+            poster="/hero-video-poster/horrorbullzhq_1750528212_3660018381867734658_54079664260.jpg"
+          >
+            <source src="/hero-video/horrorbullzhq_1745182624_3615176192438272992_54079664260.mp4" type="video/mp4">
+            <!-- Fallback for unsupported browsers -->
+            <div class="w-full h-full bg-gradient-to-br from-brand-blue to-brand-silver flex items-center justify-center">
+              <div class="text-white text-center">
+                <Icon class="w-12 h-12 text-white mb-4" name="bx:bxs-dog" />
+                <p class="text-lg font-semibold">Elite English Bulldogs</p>
+                <p class="text-sm opacity-90">Your browser doesn't support video</p>
+              </div>
+            </div>
+          </video>
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="absolute -top-4 -right-4 w-20 h-20 bg-brand-blue rounded-full opacity-20"></div>
+        <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-brand-silver rounded-full opacity-10"></div>
+      </div>
+    </div>
+    
+    <!-- Hero Content -->
+    <div class="text-center lg:text-left">
+      <!-- Partnership Badge -->
+      <div class="inline-flex items-center gap-2 bg-brand-blue bg-opacity-10 px-4 py-2 rounded-full mb-6">
+        <div class="w-2 h-2 bg-brand-blue rounded-full"></div>
+        <span class="text-brand-blue font-medium text-sm">Premium Partnership</span>
+      </div>
+      
+      <!-- Main Headline -->
+      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-dark leading-tight mb-6">
+        Elite English
+        <span class="text-brand-blue">Bulldogs</span>
+        <br />
+        <span class="text-brand-silver">Born to Champion</span>
+      </h1>
+      
+      <!-- Subheadline -->
+      <p class="text-lg md:text-xl text-gray-600 max-w-2xl mb-8 leading-relaxed">
+        Maxline Bulldogs × Horrorbullz HQ presents the finest English Bulldog breeding program. 
+        <span class="text-brand-blue font-semibold">Championship bloodlines</span>, 
+        <span class="text-brand-blue font-semibold">health-tested genetics</span>, 
+        and <span class="text-brand-blue font-semibold">luxury care</span> in every pup.
+      </p>
+      
+      <!-- Stats -->
+      <div class="flex flex-wrap gap-6 mb-8 justify-center lg:justify-start">
+        <div class="text-center">
+          <div class="text-2xl font-bold text-brand-blue">25+</div>
+          <div class="text-sm text-gray-600">Champion Lines</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-brand-blue">10+</div>
+          <div class="text-sm text-gray-600">Years Experience</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-brand-blue">100%</div>
+          <div class="text-sm text-gray-600">Health Tested</div>
+        </div>
+      </div>
+      
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+        <Link
+          href="/studs"
+          style="luxury"
+          class="flex gap-2 items-center justify-center">
+          <Icon class="w-5 h-5" name="bx:bxs-crown" />
+          View Champion Studs
+        </Link>
+        <Link
+          href="/puppies"
+          style="outline"
+          class="flex gap-2 items-center justify-center">
+          <Icon class="w-5 h-5" name="bx:bxs-heart" />
+          See Available Puppies
+        </Link>
+      </div>
+      
+      <!-- Trust indicators -->
+      <div class="mt-8 flex flex-wrap gap-4 items-center justify-center lg:justify-start text-sm text-gray-500">
+        <div class="flex items-center gap-1">
+          <Icon class="w-4 h-4 text-brand-blue" name="bx:bxs-shield" />
+          <span>Health Guaranteed</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <Icon class="w-4 h-4 text-brand-blue" name="bx:bxs-award" />
+          <span>AKC Registered</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <Icon class="w-4 h-4 text-brand-blue" name="bx:bxs-truck" />
+          <span>Safe Delivery</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

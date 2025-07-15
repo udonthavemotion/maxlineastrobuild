@@ -1,0 +1,92 @@
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --font-sans:
+    Poppins, Inter Variable, Inter, ui-sans-serif,
+    system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+  
+  --font-heading:
+    'Bebas Neue', 'Poppins', sans-serif;
+
+  /* Custom brand colors */
+  --color-brand-blue: #5A82F1;
+  --color-brand-silver: #C0C0C0;
+  --color-brand-dark: #1a1a1a;
+  --color-brand-gray: #2d2d2d;
+  
+  /* Extended palette */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #5A82F1;
+  --color-blue-600: #4c69d4;
+  --color-blue-700: #4157b7;
+  --color-blue-800: #3b4a99;
+  --color-blue-900: #323d7b;
+  
+  --color-silver-50: #f8f9fa;
+  --color-silver-100: #f1f3f4;
+  --color-silver-200: #e8eaed;
+  --color-silver-300: #dadce0;
+  --color-silver-400: #c8c9cc;
+  --color-silver-500: #C0C0C0;
+  --color-silver-600: #9aa0a6;
+  --color-silver-700: #80868b;
+  --color-silver-800: #5f6368;
+  --color-silver-900: #3c4043;
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-brand-blue {
+    color: var(--color-brand-blue);
+  }
+  
+  .text-brand-silver {
+    color: var(--color-brand-silver);
+  }
+  
+  .text-brand-dark {
+    color: var(--color-brand-dark);
+  }
+  
+  .bg-brand-blue {
+    background-color: var(--color-brand-blue);
+  }
+  
+  .bg-brand-silver {
+    background-color: var(--color-brand-silver);
+  }
+  
+  .bg-brand-dark {
+    background-color: var(--color-brand-dark);
+  }
+  
+  .bg-brand-gray {
+    background-color: var(--color-brand-gray);
+  }
+  
+  .border-brand-blue {
+    border-color: var(--color-brand-blue);
+  }
+  
+  .border-brand-silver {
+    border-color: var(--color-brand-silver);
+  }
+  
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  
+  .gradient-brand {
+    background: linear-gradient(135deg, var(--color-brand-blue) 0%, var(--color-brand-silver) 100%);
+  }
+}
+
+/*
+  The default border color has changed to `

@@ -1,0 +1,102 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon/components";
+
+const features = [
+  {
+    title: "Champion Bloodlines",
+    description:
+      "Our English Bulldogs trace back to the most prestigious champion bloodlines, ensuring exceptional conformation and temperament in every generation.",
+    icon: "bx:bxs-crown",
+  },
+  {
+    title: "Health Testing",
+    description:
+      "Every breeding dog undergoes comprehensive health screening including heart, spine, and respiratory testing to ensure the healthiest puppies possible.",
+    icon: "bx:bxs-shield",
+  },
+  {
+    title: "Luxury Care",
+    description:
+      "From whelping to weaning, our puppies receive premium nutrition, veterinary care, and socialization in our state-of-the-art facilities.",
+    icon: "bx:bxs-heart",
+  },
+  {
+    title: "Breeding Excellence",
+    description:
+      "Maxline Bulldogs × Horrorbullz HQ represents the pinnacle of English Bulldog breeding, combining decades of expertise with modern techniques.",
+    icon: "bx:bxs-star",
+  },
+  {
+    title: "Lifetime Support",
+    description:
+      "Our commitment extends beyond purchase with lifetime breeder support, training resources, and a network of bulldog enthusiasts.",
+    icon: "bx:bxs-user",
+  },
+  {
+    title: "Proven Genetics",
+    description:
+      "Our breeding program produces consistent results with excellent structure, temperament, and health, backed by our comprehensive health guarantee.",
+    icon: "bx:bx-dna",
+  },
+];
+---
+
+<div class="mt-16 md:mt-24 px-4">
+  <div class="text-center mb-16">
+    <h2 class="font-heading text-4xl lg:text-5xl font-bold text-brand-dark mb-4">
+      Why Choose Our 
+      <span class="text-brand-blue">Bulldogs</span>
+    </h2>
+    <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+      Experience the difference of working with premier English Bulldog breeders. 
+      Our partnership brings together the best of champion bloodlines and uncompromising quality.
+    </p>
+  </div>
+  
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+    {
+      features.map((item) => (
+        <div class="group">
+          <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-brand-blue/20">
+            <div class="flex items-start gap-4">
+              <div class="mt-1 bg-gradient-to-br from-brand-blue to-blue-600 rounded-xl p-3 w-14 h-14 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <Icon class="text-white w-7 h-7" name={item.icon} />
+              </div>
+              <div class="flex-1">
+                <h3 class="font-bold text-xl text-brand-dark mb-3 group-hover:text-brand-blue transition-colors">
+                  {item.title}
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  
+  <!-- Call to Action -->
+  <div class="mt-16 text-center">
+    <div class="bg-gradient-to-r from-brand-blue to-blue-600 rounded-2xl p-8 md:p-12 text-white">
+      <h3 class="font-heading text-3xl md:text-4xl font-bold mb-4">
+        Ready to Find Your Perfect Bulldog?
+      </h3>
+      <p class="text-lg md:text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+        Browse our available studs and puppies, or contact us to learn more about our breeding program and upcoming litters.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                 <a href="/studs" class="bg-white text-brand-blue hover:bg-gray-50 px-6 py-3 rounded-lg font-semibold transition-colors inline-flex items-center gap-2">
+           <Icon class="w-5 h-5" name="bx:bxs-crown" />
+           View Champion Studs
+         </a>
+                 <a href="/puppies" class="bg-white bg-opacity-10 hover:bg-opacity-20 text-white border border-white border-opacity-30 px-6 py-3 rounded-lg font-semibold transition-all inline-flex items-center gap-2">
+           <Icon class="w-5 h-5" name="bx:bxs-heart" />
+           See Available Puppies
+         </a>
+      </div>
+    </div>
+  </div>
+</div>

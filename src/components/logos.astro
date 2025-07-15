@@ -1,0 +1,114 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon/components";
+
+const featuredDogs = [
+  {
+    name: "Champion Thunder",
+    type: "Stud",
+    age: "3 years",
+    status: "Available",
+    price: "Stud Fee: $2,500",
+    image: "champion-thunder.jpg"
+  },
+  {
+    name: "Princess Luna",
+    type: "Puppy",
+    age: "8 weeks",
+    status: "Available",
+    price: "$4,500",
+    image: "princess-luna.jpg"
+  },
+  {
+    name: "King Maximus",
+    type: "Stud",
+    age: "4 years",
+    status: "Available",
+    price: "Stud Fee: $3,000",
+    image: "king-maximus.jpg"
+  },
+  {
+    name: "Bella Rose",
+    type: "Puppy",
+    age: "10 weeks",
+    status: "Available",
+    price: "$4,200",
+    image: "bella-rose.jpg"
+  }
+];
+---
+
+<div class="mt-24 px-4">
+  <div class="text-center mb-16">
+    <h2 class="font-heading text-4xl lg:text-5xl font-bold text-brand-dark mb-4">
+      Featured <span class="text-brand-blue">Studs</span> & <span class="text-brand-blue">Puppies</span>
+    </h2>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+      Discover our exceptional English Bulldogs available for breeding and adoption. 
+      Each dog represents the pinnacle of our breeding program.
+    </p>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+    {featuredDogs.map((dog) => (
+      <div class="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+        <!-- Dog Image Placeholder -->
+        <div class="aspect-square bg-gradient-to-br from-brand-blue to-blue-600 flex items-center justify-center relative overflow-hidden">
+          <div class="text-white text-center">
+            <Icon class="w-12 h-12 mb-2 mx-auto" name="bx:bxs-dog" />
+            <p class="text-sm font-medium">{dog.name}</p>
+            <p class="text-xs opacity-80">Photo Coming Soon</p>
+          </div>
+          
+          <!-- Status Badge -->
+          <div class="absolute top-3 right-3">
+            <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+              {dog.status}
+            </span>
+          </div>
+          
+          <!-- Type Badge -->
+          <div class="absolute top-3 left-3">
+            <span class={`text-white text-xs font-bold px-2 py-1 rounded-full ${dog.type === 'Stud' ? 'bg-brand-blue' : 'bg-pink-500'}`}>
+              {dog.type}
+            </span>
+          </div>
+        </div>
+        
+        <!-- Dog Details -->
+        <div class="p-6">
+          <h3 class="font-bold text-xl text-brand-dark mb-2 group-hover:text-brand-blue transition-colors">
+            {dog.name}
+          </h3>
+          <p class="text-gray-600 mb-3 flex items-center gap-2">
+            <Icon class="w-4 h-4 text-brand-blue" name="bx:bxs-calendar" />
+            {dog.age}
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-brand-blue font-bold text-lg">{dog.price}</span>
+            <button class="bg-brand-blue text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm font-medium">
+              View Details
+            </button>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+  
+  <!-- Call to Action -->
+  <div class="text-center mt-12">
+    <p class="text-gray-600 mb-6">
+      Ready to welcome a champion bulldog into your family?
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+               <a href="/studs" class="bg-brand-blue text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors font-semibold inline-flex items-center gap-2">
+           <Icon class="w-5 h-5" name="bx:bxs-crown" />
+           View All Studs
+         </a>
+               <a href="/puppies" class="bg-white text-brand-blue border-2 border-brand-blue px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors font-semibold inline-flex items-center gap-2">
+           <Icon class="w-5 h-5" name="bx:bxs-heart" />
+           View All Puppies
+         </a>
+    </div>
+  </div>
+</div>
