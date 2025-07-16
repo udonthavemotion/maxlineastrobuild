@@ -18,8 +18,8 @@ const resolvedImageWithDomain = new URL(
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "Maxline Bulldogs × Horrorbullz HQ"
-  : "Maxline Bulldogs × Horrorbullz HQ - Premium English Bulldog Breeding";
+  ? title + " | " + "Main Line Bulldogs"
+  : "Main Line Bulldogs - Premium English Bulldog Breeding";
 ---
 
 <!doctype html>
@@ -38,27 +38,27 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Premium English Bulldog breeding by Maxline Bulldogs × Horrorbullz HQ. Elite bloodlines, championship studs, and healthy puppies available."
+      description="Premium English Bulldog breeding by Main Line Bulldogs. Wellington, Florida & UK operations in partnership with HorrorBullz HQ. Quality breeding program, championship studs, and healthy puppies available."
       canonical={canonicalURL}
       twitter={{
-        creator: "@maxlinebulldogs",
-        site: "@horrorbullz",
+        creator: "@mainlinebulldogs",
+        site: "@mainlinebulldogs",
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Maxline Bulldogs × Horrorbullz HQ - Premium English Bulldog Breeding`,
+          title: `Main Line Bulldogs - Premium English Bulldog Breeding`,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Maxline Bulldogs × Horrorbullz HQ Homepage",
+          alt: "Main Line Bulldogs - Premium English Bulldog Breeding",
         },
       }}
     />
   </head>
-  <body class="bg-gray-50">
+  <body class="bg-primary">
     <Navbar />
     <slot />
     <Footer />

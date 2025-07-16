@@ -2,7 +2,7 @@
 interface Props {
   size?: "md" | "lg";
   block?: boolean;
-  style?: "outline" | "primary" | "inverted";
+  style?: "outline" | "primary" | "secondary" | "inverted";
   class?: string;
   [x: string]: any;
 }
@@ -21,16 +21,17 @@ const sizes = {
 };
 
 const styles = {
-  outline: "border-2 border-black hover:bg-black text-black hover:text-white",
-  primary:
-    "bg-black text-white hover:bg-slate-900  border-2 border-transparent",
+  outline: "border-2 border-brand-blue hover:bg-brand-blue text-brand-blue hover:text-white",
+  primary: "bg-brand-orange text-white hover:bg-brand-orange-hover border-2 border-transparent shadow-medium",
+  secondary: "bg-brand-blue text-white hover:bg-brand-blue-hover border-2 border-transparent shadow-medium",
+  inverted: "bg-white text-brand-navy hover:bg-neutral-100 border-2 border-transparent shadow-medium",
 };
 ---
 
 <button
   {...rest}
   class:list={[
-    "rounded-sm text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200",
+    "rounded-lg text-center font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:ring-offset-2 hover:scale-105 hover:shadow-strong",
     block && "w-full",
     sizes[size],
     styles[style],

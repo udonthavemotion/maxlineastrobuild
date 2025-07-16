@@ -3,7 +3,7 @@ interface Props {
   href: string;
   size?: "md" | "lg";
   block?: boolean;
-  style?: "outline" | "primary" | "inverted" | "muted" | "luxury";
+  style?: "outline" | "primary" | "secondary" | "inverted" | "muted";
   class?: string;
   [x: string]: any;
 }
@@ -23,11 +23,11 @@ const sizes = {
 };
 
 const styles = {
-  outline: "bg-white border-2 border-brand-blue hover:bg-blue-50 text-brand-blue font-semibold",
-  primary: "bg-brand-blue text-white hover:bg-blue-600 border-2 border-transparent font-semibold shadow-lg",
-  inverted: "bg-white text-brand-dark border-2 border-transparent hover:bg-gray-100 font-semibold",
-  muted: "bg-brand-silver hover:bg-silver-400 text-brand-dark border-2 border-transparent font-medium",
-  luxury: "gradient-brand text-white hover:opacity-90 border-2 border-transparent font-bold shadow-xl",
+  outline: "bg-transparent border-2 border-brand-blue hover:bg-brand-blue text-brand-blue hover:text-white font-semibold shadow-medium",
+  primary: "bg-brand-orange text-white hover:bg-brand-orange-hover border-2 border-transparent font-semibold shadow-medium",
+  secondary: "bg-brand-blue text-white hover:bg-brand-blue-hover border-2 border-transparent font-semibold shadow-medium",
+  inverted: "bg-white text-brand-navy border-2 border-brand-blue hover:bg-neutral-100 font-semibold shadow-medium",
+  muted: "bg-neutral-100 hover:bg-neutral-200 text-secondary border-2 border-neutral-300 font-medium shadow-soft",
 };
 ---
 
@@ -35,7 +35,7 @@ const styles = {
   href={href}
   {...rest}
   class:list={[
-    "rounded-lg text-center transition-all duration-300 focus-visible:ring-2 ring-offset-2 ring-brand-blue transform hover:scale-105",
+    "rounded-lg text-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:ring-offset-2 hover:scale-105 hover:shadow-strong",
     block && "w-full",
     sizes[size],
     styles[style],
