@@ -4,8 +4,6 @@ import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
 import { getImageUrl, formatDate, getPuppies, getStuds } from "@/lib/graphql";
 
-
-
 // Fetch data from Strapi GraphQL
 let latestPuppies: any[] = [];
 let latestStuds: any[] = [];
@@ -49,6 +47,12 @@ try {
       name: 'Bella',
       updatedAt: '2024-01-14T15:45:00.000Z',
       images: []
+    },
+    {
+      documentId: '3',
+      name: 'Scarlett',
+      updatedAt: '2024-01-13T12:20:00.000Z',
+      images: []
     }
   ];
   
@@ -63,6 +67,12 @@ try {
       documentId: '2',
       name: 'Hannibal', 
       updatedAt: '2024-01-14T14:10:00.000Z',
+      images: []
+    },
+    {
+      documentId: '3',
+      name: 'King',
+      updatedAt: '2024-01-13T11:30:00.000Z',
       images: []
     }
   ];
@@ -80,8 +90,10 @@ try {
 
     <!-- Debug Information -->
     {error && (
-      <div class="mb-8 bg-red-50 p-4 rounded-lg">
-        <p class="text-red-600">Error: {error}</p>
+      <div class="mb-8 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+        <p class="text-yellow-800">
+          <strong>Note:</strong> {error} Showing sample data for demonstration.
+        </p>
       </div>
     )}
 

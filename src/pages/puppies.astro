@@ -21,10 +21,10 @@ try {
   
   // Fallback to mock data for development
   puppies = [
-  {
-    id: 1,
-    name: 'Scarlett',
-    status: 'Available',
+    {
+      id: 1,
+      name: 'Scarlett',
+      status: 'Available',
       date_of_birth: '2023-10-01',
       price: 5500,
       gender: 'Female',
@@ -37,8 +37,25 @@ try {
       createdAt: '2023-10-01T00:00:00.000Z',
       updatedAt: '2023-10-01T00:00:00.000Z',
       publishedAt: '2023-10-01T00:00:00.000Z'
-  }
-];
+    },
+    {
+      id: 2,
+      name: 'Max',
+      status: 'Available',
+      date_of_birth: '2023-09-15',
+      price: 6000,
+      gender: 'Male',
+      color: 'Blue',
+      weight: '18 lbs',
+      description: 'Stunning blue male puppy',
+      parents: 'Hannibal x Luna',
+      healthrecords: 'Up to date on all vaccinations',
+      images: [],
+      createdAt: '2023-09-15T00:00:00.000Z',
+      updatedAt: '2023-09-15T00:00:00.000Z',
+      publishedAt: '2023-09-15T00:00:00.000Z'
+    }
+  ];
 }
 ---
 
@@ -52,6 +69,15 @@ try {
     </Sectionhead>
     
     <main class="mt-16">
+      <!-- Error Message -->
+      {error && (
+        <div class="mb-8 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+          <p class="text-yellow-800">
+            <strong>Note:</strong> {error} Showing sample data for demonstration.
+          </p>
+        </div>
+      )}
+
       <!-- Filter Controls -->
       <div class="mb-8 flex flex-col sm:flex-row gap-4 justify-center">
         <button 
@@ -85,17 +111,16 @@ try {
             data-status={puppy.status}
           >
             <div class="photo-hover relative">
-              <!-- TODO: Replace this placeholder with your actual image path (e.g., from public/ or Strapi media URL). This is the spot to edit for custom images later. -->
               <img 
-                src={puppy.images[0].src}
-                alt={puppy.images[0].alt}
+                src={puppy.images && puppy.images.length > 0 ? getImageUrl(puppy.images[0], 'medium') : 'https://placehold.co/400x300?text=No+Image'}
+                alt={puppy.images && puppy.images.length > 0 && puppy.images[0].alternativeText ? puppy.images[0].alternativeText : `${puppy.name} puppy`}
                 loading="lazy"
                 class="w-full h-48 object-cover"
               />
               <!-- Hover overlay text -->
               <div class="overlay-text">
                 <h3 class="text-xl font-bold">{puppy.name}</h3>
-                <p class="text-lg">{puppy.price}</p>
+                <p class="text-lg">{formatPrice(puppy.price)}</p>
               </div>
             </div>
             
@@ -113,10 +138,16 @@ try {
               
               <div class="space-y-2 mb-4">
                 <p class="text-gray-600">
-                  <strong>Date of Birth:</strong> {new Date(puppy.dob).toLocaleDateString()}
+                  <strong>Date of Birth:</strong> {formatDate(puppy.date_of_birth)}
                 </p>
                 <p class="text-gray-600">
-                  <strong>Price:</strong> {puppy.price}
+                  <strong>Price:</strong> {formatPrice(puppy.price)}
+                </p>
+                <p class="text-gray-600">
+                  <strong>Gender:</strong> {puppy.gender}
+                </p>
+                <p class="text-gray-600">
+                  <strong>Color:</strong> {puppy.color}
                 </p>
               </div>
               
