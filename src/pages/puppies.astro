@@ -2,68 +2,44 @@
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
+import { getPuppies, formatPrice, formatDate, getImageUrl, type Puppy } from "@/lib/strapi";
 
-// TypeScript interface for Puppy data
-interface Puppy {
-  id: number;
-  name: string;
-  status: 'Available' | 'Reserved';
-  dob: string;
-  price: string;
-  images: { src: string; alt: string }[];
-}
+// Fetch puppies from Strapi
+let puppies: Puppy[] = [];
+let error: string | null = null;
 
-// Mock data - TODO: Replace with fetch from Strapi: const response = await fetch('http://localhost:1337/api/puppies?populate=images'); const { data } = await response.json();
-const mockPuppies: Puppy[] = [
+try {
+  const response = await getPuppies({
+    populate: 'images',
+    sort: 'createdAt:desc',
+    pageSize: 50, // Adjust as needed
+  });
+  puppies = response.data;
+} catch (err) {
+  console.error('Error fetching puppies:', err);
+  error = 'Failed to load puppies. Please try again later.';
+  
+  // Fallback to mock data for development
+  puppies = [
   {
     id: 1,
     name: 'Scarlett',
     status: 'Available',
-    dob: '2023-10-01',
-    price: '$5,500',
-    images: [{ src: 'https://placehold.co/400x300?text=Scarlett+Puppy', alt: 'Scarlett puppy' }]
-  },
-  {
-    id: 2,
-    name: 'Joker',
-    status: 'Reserved',
-    dob: '2023-09-15',
-    price: '$5,200',
-    images: [{ src: 'https://placehold.co/400x300?text=Joker+Puppy', alt: 'Joker puppy' }]
-  },
-  {
-    id: 3,
-    name: 'Raven',
-    status: 'Available',
-    dob: '2023-10-08',
-    price: '$6,000',
-    images: [{ src: 'https://placehold.co/400x300?text=Raven+Puppy', alt: 'Raven puppy' }]
-  },
-  {
-    id: 4,
-    name: 'Draco',
-    status: 'Available',
-    dob: '2023-09-22',
-    price: '$5,300',
-    images: [{ src: 'https://placehold.co/400x300?text=Draco+Puppy', alt: 'Draco puppy' }]
-  },
-  {
-    id: 5,
-    name: 'Deadpool',
-    status: 'Reserved',
-    dob: '2023-10-12',
-    price: '$5,800',
-    images: [{ src: 'https://placehold.co/400x300?text=Deadpool+Puppy', alt: 'Deadpool puppy' }]
-  },
-  {
-    id: 6,
-    name: 'Wolverine',
-    status: 'Available',
-    dob: '2023-09-28',
-    price: '$5,400',
-    images: [{ src: 'https://placehold.co/400x300?text=Wolverine+Puppy', alt: 'Wolverine puppy' }]
+      date_of_birth: '2023-10-01',
+      price: 5500,
+      gender: 'Female',
+      color: 'Red',
+      weight: '15 lbs',
+      description: 'Beautiful red female puppy',
+      parents: 'Joker x Harley',
+      healthrecords: 'Up to date on all vaccinations',
+      images: [],
+      createdAt: '2023-10-01T00:00:00.000Z',
+      updatedAt: '2023-10-01T00:00:00.000Z',
+      publishedAt: '2023-10-01T00:00:00.000Z'
   }
 ];
+}
 ---
 
 <Layout title="Available Puppies">
@@ -103,7 +79,7 @@ const mockPuppies: Puppy[] = [
 
       <!-- Puppies Grid -->
       <div id="puppies-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-        {mockPuppies.map((puppy) => (
+        {puppies.map((puppy) => (
           <article 
             class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 puppy-card"
             data-status={puppy.status}
